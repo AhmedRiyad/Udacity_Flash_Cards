@@ -8,5 +8,5 @@ yarn start
 
 ```
 
-Tested only on iOS emulator
+Tested only on iOS simulator
 
