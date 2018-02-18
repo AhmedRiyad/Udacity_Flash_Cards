@@ -14,16 +14,20 @@ import {saveDeckTitle} from '../../utils/api';
 class NewDeck extends Component {
     state = {
         titleText: '',
-        errorMessage: false,
+        errorMessage: '',
     };
 
     handleSubmit = () => {
         const {titleText} = this.state;
-        const {addDeck, navigation} = this.props;
+        const {addDeck, navigation, decks} = this.props;
 
         if (!titleText) {
             this.setState({
-                errorMessage: true,
+                errorMessage: 'This field is required',
+            })
+        } else if (decks[titleText]) {
+            this.setState({
+                errorMessage: 'Deck already exists',
             })
         } else {
             this.titleInput.clearText();
@@ -63,7 +67,7 @@ class NewDeck extends Component {
                             ref={input => this.titleInput = input}
                         />
                         <FormValidationMessage>
-                            {this.state.errorMessage ? 'This field is required' : ''}
+                            {this.state.errorMessage}
                         </FormValidationMessage>
                     </View>
 
@@ -107,8 +111,10 @@ const styles = StyleSheet.create({
 });
 
 
-function mapStateToProps() {
-    return {}
+function mapStateToProps(decks) {
+    return {
+        decks: decks
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {

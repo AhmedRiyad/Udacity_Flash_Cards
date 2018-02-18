@@ -27,7 +27,7 @@ export function setLocalNotification() {
                 Permissions.askAsync(Permissions.NOTIFICATIONS)
                     .then(({status}) => {
                         if (status === 'granted') {
-                            Notifications.cancelAllScheduledNotificationsAsync()
+                            Notifications.cancelAllScheduledNotificationsAsync();
 
                             let tomorrow = new Date();
                             tomorrow.setDate(tomorrow.getDate() + 1);

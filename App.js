@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {StatusBar, View} from 'react-native';
 import {TabNavigator, StackNavigator} from 'react-navigation';
 import {Ionicons, Entypo} from '@expo/vector-icons';
 import {Provider} from 'react-redux'
