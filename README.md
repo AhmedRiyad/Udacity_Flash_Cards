@@ -1,4 +1,4 @@
-## Udacity Flash Cards Project For iOS
+## Udacity Flash Cards Project
 
 ## Usage
 
@@ -7,4 +7,6 @@ yarn install
 yarn start
 
 ```
+
+Tested only on iOS emulator
 
