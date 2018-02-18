@@ -2,8 +2,8 @@ import React from 'react';
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import {TabNavigator, StackNavigator} from 'react-navigation';
 import {Ionicons, Entypo} from '@expo/vector-icons';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
 import reducer from './reducers'
 import {COLORS} from './utils/constants';
 import DeckList from './components/DeckList/DeckList';
@@ -11,6 +11,7 @@ import Deck from './components/Deck/Deck';
 import Quiz from './components/Quiz/Quiz';
 import NewDeck from './components/NewDeck/NewDeck';
 import AddCard from './components/AddCard/AddCard';
+import {setLocalNotification} from './utils/helpers';
 
 
 const Tabs = TabNavigator({
@@ -85,6 +86,10 @@ const MainNavigator = StackNavigator({
 
 
 export default class App extends React.Component {
+    componentDidMount() {
+        setLocalNotification();
+    }
+
     render() {
         return (
             <Provider store={createStore(reducer)}>

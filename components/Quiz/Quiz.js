@@ -7,6 +7,7 @@ import {
 import {Button, Text} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {shuffle} from 'lodash';
+import {setLocalNotification, clearLocalNotification} from '../../utils/helpers';
 
 
 class Question extends Component {
@@ -57,6 +58,11 @@ class Quiz extends Component {
         questions: shuffle(this.props.deck.questions)
     };
 
+    resetNotification() {
+        clearLocalNotification()
+            .then(setLocalNotification);
+    }
+
     handleAnswer(correct) {
         const {currentQuestionIndex, score, questions} = this.state;
 
@@ -70,6 +76,7 @@ class Quiz extends Component {
                 currentQuestionIndex: currentQuestionIndex + 1
             })
         } else {
+            this.resetNotification();
             this.setState({
                 showScore: true
             })
